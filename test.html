@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+  </script>
+
+  <script>
+    $(() => {
+      $('#plan').click( e => {
+        fetch('http://128.199.204.164:3000/planner', {
+          method: 'get',
+        })
+        .then(res => res.json())
+        .then(json => alert(json.message))
+        
+      })
+      $('#clear').click( e => {
+        fetch('http://128.199.204.164:3000/clearorders', {
+          method: 'delete',
+        })
+        .then(res => res.json())
+        .then(json => alert(json.message))
+      })
+    })
+
+  </script>
+</head>
+<body>
+  <div id='app'>
+    <form id='uploadfile' action="http://128.199.204.164:3000/uploadroute" method="post" enctype="multipart/form-data" accept=".xlsx, .xls">
+      <input type="file" name="exel">
+      <input type="submit" value="Upload">
+    </form>
+    <br><br><br>
+    <button id='plan' style='color: green;'/>
+      PLANNER
+    </button>
+    <button id='clear' style='color: red;'/>
+      CLEAR DATABASE
+    </button>
+    
+  </div>
+</body>
+</html>

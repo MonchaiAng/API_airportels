@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src='http://localhost:3000/socket.io/socket.io.js'></script>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+  </script>
+
+  <script>
+    $(() => {
+
+      // let orders = []
+      // fetch('http://localhost:3000/orders')
+      // .then(res => res.json())
+      // .then(json => {
+      //   orders = json.orders
+      //   orders.map(order => {
+      //     $('#orders').append(`<div class='order_id${order.order_id}'>${order.order_id}</div>`)
+      //   })
+      // })
+
+      // var socket = io('http://localhost:3000')
+      // socket.on('newOrder', order => {
+      //   orders.push(order)
+      //   $('#orders').append(`<div class='order_id${order.order_id}'>${order.order_id}</div>`)
+      // });
+
+      // socket.on('orderStatus', data => {
+      //   console.log(data)
+      // });
+      // const changeLocation = data => {
+      //   socket.emit('changeLocation', data)
+      // }
+      $('#upload').click(e => {
+        console.log(document.getElementById('image').files[0])
+        var data = new FormData();
+        data.append('fullname', 'qweqwe')
+        data.append('phone', '1234567890123')
+        data.append('email', 'qweqwe')
+        data.append('gender', 'male')
+        data.append('age', '12')
+        data.append('image', document.getElementById('image').files[0])
+        fetch('http://localhost:3000/drivers', {
+          method: 'post',
+          body: data,
+        })
+        .then(res => res.json())
+        .then(json => console.log(json))
+        .catch(err => console.log(err))
+      })
+
+      const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFkbWluIiwiaWF0IjoxNTMzMjkwNTU3fQ.yeNx2hfG3QtMg8bH8VPlOTUsISwApgHxhprV07ikNKs'
+      $('#fetch').click(e => {
+        
+        fetch('http://128.199.204.164:3000/drivers', {
+          method: 'get',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+          }
+        })
+        .then(res => res.json())
+        .then(json => console.log(json))
+        .catch(err => console.log(err))
+      })
+      // setInterval(() => {
+      //   changeLocation({
+      //     orderID: orders.map(order => order.order_id)[Math.floor(Math.random()*orders.length)],
+      //     lat: 14+(Math.floor(Math.random()*500))*0.001,
+      //     lng: 5+(Math.floor(Math.random()*500))*0.001,
+      //     // estimateTime: '01:00:00'
+      //   })
+      // }, 10)
+      // socket.on('changeLocation', data => {
+      //   $(`.order_id${data.orderID}`).html(`${data.orderID} lat : ${data.lat} / lng : ${data.lng}`)
+      // })
+    })
+
+  </script>
+</head>
+<body>
+  <div id='app'></div>
+  <div id='orders'></div>
+  <input type="file" enctype="multipart/form-data" id='image'>
+  <button id='upload'>UPLOAD IMAGE</button>
+
+  <button id='fetch'>FETCH</button>
+</body>
+</html>

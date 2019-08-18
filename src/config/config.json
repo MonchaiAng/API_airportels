@@ -1,0 +1,53 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "airportels",
+    "host": "localhost",
+    "port": 3307,
+    "dialect": "mysql",
+    "mailer": {
+      "host": "cityhall.hostlogic.sg",
+      "port": 465,
+      "secure": true,
+      "auth": {
+        "user": "kittapard@buzzfreeze.com",
+        "pass": "punchpunchpunch"
+      }
+    }
+  },
+  "test": {
+    "username": "airportel",
+    "password": "$OxEql#ak9",
+    "database": "airportels",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql",
+    "mailer": {
+      "host": "cityhall.hostlogic.sg",
+      "port": 465,
+      "secure": true,
+      "auth": {
+        "user": "kittapard@buzzfreeze.com",
+        "pass": "punchpunchpunch"
+      }
+    }
+  },
+  "production": {
+    "username": "airportel",
+    "password": "$OxEql#ak9",
+    "database": "airportels",
+    "host": "localhost",
+    "port": 3306,
+    "dialect": "mysql",
+    "mailer": {
+      "host": "cityhall.hostlogic.sg",
+      "port": 465,
+      "secure": true,
+      "auth": {
+        "user": "kittapard@buzzfreeze.com",
+        "pass": "punchpunchpunch"
+      }
+    }
+  }
+}

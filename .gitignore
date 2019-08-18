@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+/public/img/drivers
+/public/img/cars
+# /public/img/bags
+# /public/img/license
+/public/document/document
+config.js
